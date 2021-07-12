@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Guess Your Number</title>
+    </head>
+    <body>
+        <hr>
+        <h1>Created by Liew Yi Jie from Cresendo International College,Johor Bahru</h1>
+        <hr>
+        <h1>Guess Number Between 1-100</h1>
+        Guess : 
+        <input type="number" name = "number" id = "random" min="1" max="100" width="90">
+        <button onclick = "check()">Guess</button>
+        <hr>
+        Your Guess:
+        <hr>
+        <div id="msg">
+        </div>
+    </body>
+    <script>
+        var max = 100;
+        var min = 1;
+        var  count = 0;
+        var answer = parseInt((Math.random())*100+1);
+        function check()
+        {   
+            count ++;
+            var guess = document.getElementById("random").value;
+            var node = document.createElement("p");
+            var textnode = document.createTextNode("Guess"+ count+": "+guess);
+            node.appendChild(textnode);
+            document.getElementById("msg").appendChild(node);
+            
+
+            if(answer == guess){
+                tip = "BINGO!!"
+            }else if(answer < guess){
+                max = guess
+                tip = "The value is between "+min+" and "+max
+            }else if(answer > guess){
+                min = guess
+                tip = "The value is between "+min+" and "+max
+            }
+            node = document.createElement("p");
+            textnode = document.createTextNode(tip)
+            node.appendChild(textnode);
+            document.getElementById("msg").appendChild(node);
+        }
+    </script>
+</html>
